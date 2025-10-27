@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- Energy Storage System Launch File -->
+
+
+
+    <!--node pkg="rosserial_python" type="serial_node.py" name="sensing_unit_node" output="screen" args="tcp 11412">
+    	<param name="port" value="tcp" />
+    </node-->
+     <node pkg="rosserial_python" type="serial_node.py" name="Servo_esp_node" output="screen" args="tcp 11411">
+        <param name="port" value="tcp" />
+    </node>
+    <node pkg="rosserial_python" type="serial_node.py" name="prizm_node" output="screen">
+        <param name="port" value="/dev/ttyUSB0" />
+        <param name="baud" value="57600" />
+    </node> 
+    <!-- Energy Storage Server -->
+    <node pkg="vlns" type="serverna.py" name="energy_storage_server" output="screen" />
+
+    <!-- Optional: RQT GUI for monitoring -->
+    <!-- Uncomment the following line if you want to start rqt automatically -->
+    <!-- <node pkg="rqt_gui" type="rqt_gui" name="rqt_gui" /> -->
+
+    <!-- Optional: Launch RVIZ for visualization -->
+    <!-- <node pkg="rviz" type="rviz" name="rviz" /> 
+
+ <node pkg="pubsub" type="$(find pubsub)/data/app.js" name="seg" ></node>-->
+ 
+
+
+</launch>

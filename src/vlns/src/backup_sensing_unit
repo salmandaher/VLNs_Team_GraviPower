@@ -1,0 +1,82 @@
+import rospy 
+from vlns.srv import * 
+from std_msgs.msg import String, Float32, Bool
+encoder = 0.0
+jerk = 0.0
+mode = "charge" 
+panic_mode = "maxCharge"
+last = ""
+cars = 0
+flag=0
+jerk_flag=0
+def publisher():
+	global last
+	if mode != last:
+		pub.publish(mode)
+		rospy.loginfo(f"Changed mode to : {mode}")
+		last = mode
+def sges_server_callback(req):
+	global mode
+	mode = req.mode
+	publisher()
+	response = sgesResponse()
+	response.success = True
+	return response
+
+def enc_cb(msg):
+	global flag
+	global encoder
+	global mode
+	encoder = msg.data
+	if encoder > 50.0:
+		flag=1
+		mode = "maxCharge"
+		publisher()
+	else:
+		flag=0
+		
+def car_cb(msg):
+	global cars
+	cars +=1
+	
+	
+def jerk_cb(msg):
+	global mode
+	global panic_mode
+	global jerk_flag
+	global jerk
+	jerk = msg.data
+	if jerk>0.4:
+		if mode != "maxCharge" or flag:
+			panic_mode = mode
+		mode = "maxCharge"
+		jerk_flag = 1
+		publisher()
+		sleep(0.5)
+	elif jerk<0.4 and jerk_flag:
+		mode=panic_mode
+		jerk_flag = 0
+		publisher()
+		sleep(0.5)
+
+
+		
+		
+	
+
+rospy.init_node('control_node')
+rospy.Service('moder', sges, sges_server_callback)
+pub = rospy.Publisher('mode' , String, queue_size=10)
+height_pub = rospy.Publisher('height' , Float32, queue_size=10)
+rospy.Subscriber('energy_storage/encoder' , Float32, enc_cb)
+rospy.Subscriber('/jerk' , Float32, jerk_cb)
+rospy.Subscriber('/car_passed' , Bool, car_cb)
+
+height = Float32()
+
+height.data = encoder*32/105 + cars*0.001
+height_pub.publish(height)
+rospy.loginfo('Server is running...')
+
+rospy.spin()
+

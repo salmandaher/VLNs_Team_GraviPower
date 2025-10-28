@@ -50,7 +50,7 @@ $$
 ### Code Explanation Flowchart
 Below is a flowchart illustrating the workflow and main components of the code:
 
-![Flowchart](https://github.com/ZainAlfai/VLNs-ZainAlfai-Testing/blob/main/white%20Python%20Node.png)
+![Flowchart](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/Python%20Node%20Flowchart.png)
 
 ### Code
 You can view the full code [here](src/vlns/src/serverna.py).
@@ -70,13 +70,13 @@ The PRIZM code is responsible for directly interfacing with hardware components 
 ### Code Explanation Flowchart
 Below is a flowchart illustrating the workflow and main components of the code:
 
-![Flowchart](https://github.com/ZainAlfai/VLNs-ZainAlfai-Testing/blob/main/PRIZM%20Node%20(2).png)
+![Flowchart](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/PRIZM%20Node%20Flowchart.png)
 
 ### Code
 You can view the full code [here](relative/path/to/your_code.py).
 
 ## The ESP code:
-The ESP code functions as the core controller for mechanical and electrical actuations within the energy storage system. It manages the disconnecting and connecting mechanism, dynamically linking the main pulley to the generator during discharge or fast charge modes, and to the gearbox in charge or max charge modes. The code also controls the electrical load system by activating an LED lights during discharge mode and deactivating it otherwise. Furthermore, the ESP code modulates the PWM driver (BTS), adjusting the electrical load on the generator in response to PID control signals computed externally, ensuring precise and efficient energy management.
+The ESP code functions as the core controller for mechanical and electrical actuations within the energy storage system. It manages the disconnecting and connecting mechanism, dynamically linking the main pulley to the generator during discharge or fast charge modes, and to the gearbox in charge or max charge modes. The code also controls the electrical load system by activating the LED lights during discharge mode and deactivating it otherwise. Furthermore, the ESP code modulates the PWM driver (BTS), adjusting the electrical load on the generator in response to PID control signals computed externally, ensuring precise and efficient energy management.
 
 ### Main tasks of the ESP code:
 
@@ -87,7 +87,7 @@ The ESP code functions as the core controller for mechanical and electrical actu
 ### Code Explanation Flowchart
 Below is a flowchart illustrating the workflow and main components of the code:
 
-![Flowchart](https://github.com/ZainAlfai/VLNs-ZainAlfai-Testing/blob/main/ESP%20Node.drawio%20(1).png)
+![Flowchart](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/ESP%20Node%20Flowchart.png)
 
 ### Code
 You can view the full code [here](relative/path/to/your_code.py).
@@ -99,12 +99,12 @@ The Dashboard integrates frontend and backend components to provide a real-time,
 ### Main tasks of the Dashboard:
 
 1. Display system status in real time, including key metrics like mass height and vehicle count.
-2. Enable users to manually change operating modes via an interactive interface.
+2. Enable users to change operating modes manually via an interactive interface.
 
 ### Code Explanation Flowchart
 Below is a flowchart illustrating the workflow and main components of the code:
 
-![Flowchart](https://github.com/ZainAlfai/VLNs-ZainAlfai-Testing/blob/main/Dashboard%20Node.drawio.png)
+![Flowchart](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/Dashboard%20Node%20Flowchart.png)
 
 
 

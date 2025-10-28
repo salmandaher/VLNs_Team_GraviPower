@@ -53,7 +53,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 ![Flowchart](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/Python%20Node%20Flowchart.png)
 
 ### Code
-You can view the full code [here](src/vlns/src/serverna.py).
+You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/serverna.py).
 
 ## The PRIZM code:
 The PRIZM code is responsible for directly interfacing with hardware components to support the energy storage system's operation. It continuously reads encoder feedback to monitor the generator's rotational position and speed. The code controls the generator, turning it on during the fast charge mode and off during discharging. It detects when a car passes over the pseudo-bump to coordinate energy accumulation events. Furthermore, it manages the servo motor that controls the bump's state, flattening (deactivating) it when not charging and activating it during charging. Lastly, the PRIZM code reads ambient lighting sensor feedback to help determine system modes based on day/night conditions.
@@ -73,7 +73,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 ![Flowchart](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/PRIZM%20Node%20Flowchart.png)
 
 ### Code
-You can view the full code [here](relative/path/to/your_code.py).
+You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/PRIZM_node/PRIZM_node.ino).
 
 ## The ESP code:
 The ESP code functions as the core controller for mechanical and electrical actuations within the energy storage system. It manages the disconnecting and connecting mechanism, dynamically linking the main pulley to the generator during discharge or fast charge modes, and to the gearbox in charge or max charge modes. The code also controls the electrical load system by activating the LED lights during discharge mode and deactivating it otherwise. Furthermore, the ESP code modulates the PWM driver (BTS), adjusting the electrical load on the generator in response to PID control signals computed externally, ensuring precise and efficient energy management.
@@ -90,7 +90,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 ![Flowchart](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/ESP%20Node%20Flowchart.png)
 
 ### Code
-You can view the full code [here](relative/path/to/your_code.py).
+You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/Esp_Node/Esp_Node.ino).
 
 ## The Dashboard codes:
 
@@ -110,9 +110,9 @@ Below is a flowchart illustrating the workflow and main components of the code:
 
 ### Code Links:
 You can view the codes here: 
-- [HTML Code](relative/path/to/dashboard.html)
-- [CSS Code](relative/path/to/bootstrap.css)
-- [Node.js Code](relative/path/to/dashboard_server.js)
+- [HTML Code](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/Web%20Dashboard/public/New/index3.html)
+- [CSS Code](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/Web%20Dashboard/public/New/style.css)
+- [Node.js Code](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/Web%20Dashboard/app.js)
 
 # ROS Implementation
 

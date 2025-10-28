@@ -113,3 +113,154 @@ You can view the codes here:
 - [HTML Code](relative/path/to/dashboard.html)
 - [CSS Code](relative/path/to/bootstrap.css)
 - [Node.js Code](relative/path/to/dashboard_server.js)
+
+# ROS Implementation
+
+Since our project involves multiple controllers and a web-based dashboard, we implemented the concept of **ROS (Robot Operating System)** to facilitate communication between these controllers and maintain an organized and synchronized system workflow.  
+
+In the following sections, we explain the ROS structure that underpins the operation of our project — including detailed descriptions of each ROS node, how the nodes communicate with one another, and the types of information exchanged between them.
+
+---
+
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Raspberry Pi Node](#raspberry-pi-node)
+3. [PRIZM Node](#prizm-node)
+4. [ESP Node](#esp-node)
+5. [Dashboard Node](#dashboard-node)
+
+---
+
+## Introduction
+
+Our ROS system consists of four main nodes that communicate with each other to manage the overall functionality of the project:
+
+- **Raspberry Pi Node:**  
+  Runs a Python program that serves as the central control of the system. It performs key calculations and manages the behavior of other nodes through ROS communication.
+
+- **PRIZM Node:**  
+  Executes an Arduino program that reads data from various sensors and controls the actuator used as a generator. It functions as an endpoint in the ROS communication network.
+
+- **ESP Node:**  
+  Runs another Arduino program that serves as an additional endpoint in the ROS communication structure, handling specific sensing or control tasks.
+
+- **Dashboard Node:**  
+  Responsible for displaying system values obtained from the controllers’ sensor readings. It also allows manual mode switching to adjust system behavior.
+
+---
+
+### ROS Node Connection Graph
+The following **rqt graph** illustrates the communication links and message flow between the nodes in our ROS system:
+
+![ROS Node Graph](images/rqt.png)
+
+
+---
+
+## Raspberry Pi Node
+
+The **Raspberry Pi** device serves as the **ROS Master** in our system. It hosts the main Python node that manages communication and coordination among all other nodes through various **services**, **publishers**, and **subscribers**.
+
+---
+
+### Services
+- **Mode Service:**  
+  The Python node participates in a mode management service with the Dashboard node.  
+  When the mode is changed manually from the Dashboard, the Dashboard node sends a service request to the Python node containing the selected mode in the request message.  
+  The Python node then updates the global variable representing the current mode and returns a success response to the Dashboard node.
+
+---
+
+### Publishers
+- **`/mode`:**  
+  The Python node continuously publishes the current mode to all other nodes, ensuring system-wide synchronization and state consistency.
+
+- **`/height`:**  
+  The node calculates the height of the mass based on sensor data and publishes it for display on the Dashboard.
+
+- **`/cars_count`:**  
+  The code tracks the number of times the bump push button is activated and publishes this value to be displayed on the Dashboard.
+
+- **`/bts_value`:**  
+  The node processes mass falling speed readings, applies a PID algorithm to compute the BTS value, and publishes it to control the BTS system—optimizing load management and fall speed.
+
+---
+
+### Subscribers
+- **`/encoder`:**  
+  Receives encoder data for BTS value and height calculations.  
+- **`/car_passed`:**  
+  Monitors signals indicating that a car has passed over the bump.  
+- **`/light_sensor`:**  
+   Reads light intensity data for use in mode adjustments.
+
+---
+
+## PRIZM Node
+
+The **PRIZM node** is one of the two nodes in the system running Arduino code.  
+The program on the PRIZM controller is responsible for several key tasks, in addition to participating in multiple ROS communications with other nodes.
+
+---
+
+### Publishers
+- **`/encoder`:**  
+  The PRIZM node reads the encoder values from the TorqNedo motor used as a generator and publishes them. These readings are used by the Python node for height and speed calculations.
+
+- **`/light_sensor`:**  
+  This node publishes data from the light sensor, which is subscribed to by the Python node to trigger the system’s autonomous behavior.
+
+- **`/car_passed`:**  
+  The code monitors the push button mounted on the bump and detects when it is pressed (FALLING state). These readings are published and subscribed to by other nodes in the system to track passing vehicles.
+
+---
+
+### Subscribers
+- **`/mode`:**  
+  The node subscribes to the mode topic published by the Python node. It adjusts its behavior based on the current mode — whether the system is **charging**, **discharging**, or **fast charging**.
+
+---
+
+## ESP Node
+
+The **ESP node** is another endpoint in the ROS communication system running Arduino code.  
+It is responsible for controlling the switching mechanism and managing the load on the generator, which requires key information from other ROS nodes.
+
+---
+
+### Subscribers
+- **`/mode`:**  
+  Similar to the PRIZM node, this node subscribes to the **mode** topic published by the Python node.  
+  It adjusts its behavior dynamically based on the current mode updates received from the ROS network.
+
+---
+
+## Dashboard Node
+
+The **Dashboard node** is an essential component of the ROS network that allows users to monitor system values and manually control its behavior.  
+It participates in multiple ROS communications with other nodes to ensure accurate data display and responsive control.
+
+---
+
+### Services
+- **Mode Service:**  
+  When the user changes the mode manually using one of the mode buttons on the dashboard, the Dashboard node sends a service request to the Python node.  
+  This request updates the global system mode to the newly selected one.
+
+---
+
+### Subscribers
+- **`/mode`:**  
+  The system mode can be changed either autonomously by internal system processes or manually from the dashboard.  
+  In both cases, the Dashboard node subscribes to the **mode** topic published by the Python node and displays the current mode.  
+  This ensures system synchronization and helps in detecting communication or logic errors.
+
+- **`/car_passed`:**  
+  Subscribes to the **car_passed** topic published by the PRIZM node and displays real-time status updates indicating when a car passes over the bump.
+
+- **`/cars_count`:**  
+  Subscribes to the **cars_count** topic (published by the PRIZM node) and displays the total number of cars that have passed over the bump since the system started.
+
+- **`/height`:**  
+  Subscribes to the **height** topic published by the Python node and displays the current height of the mass on the dashboard.
+

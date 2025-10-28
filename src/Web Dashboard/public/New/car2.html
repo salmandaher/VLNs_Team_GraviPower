@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solid Gravity Energy Storage System</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">Solid Gravity Energy Storage System</h1>
+            <div class="header-info">
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span id="connectionText">Connecting...</span>
+                </div>
+                <div class="timestamp" id="timestamp"></div>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!-- Thank You Modal -->
+    <div class="modal-overlay" id="thankYouModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>🚗 Thank You!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for contributing to clean energy!</p>
+                <p>Your passage helps power our community sustainably.</p>
+                <p>Cars number:</p>
+            </div>
+            <div class="modal-footer">
+                <div class="energy-animation">
+                    <div class="energy-pulse" style="display:flex; justify-content:center; align-items:center; position:relative;">
+                    <span id="cars_count" style="color:#FFFFFF; font-weight: bold; font-size:1.5em;"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processing command...</p>
+    </div>
+
+  <!-- Socket.IO, jQuery, Bootstrap JS -->
+  <script src="/socket.io/socket.io.js"></script>
+
+
+
+
+
+  <script>
+
+    const socket = io();
+
+socket.on('cars_count', data => {
+       // updateTimestamp();
+      document.getElementById('cars_count').textContent = data.toFixed(0);
+    });
+function showThankYouModal() {
+  document.getElementById('thankYouModal').classList.add('show');
+  document.getElementById('cars_count').classList.add('show');
+  
+  setTimeout(() => {
+    document.getElementById('thankYouModal').classList.remove('show');
+    document.getElementById('cars_count').classList.remove('show');
+  }, 2000); 
+}
+    socket.on('car_passed', data => {
+ document.getElementById('connectionStatus').innerHTML = `
+                <span class="status-indicator connected"></span>
+                <span>Connected</span>
+            `;
+
+      if (data) {
+	showThankYouModal();
+
+      }
+    });
+
+  
+
+
+  </script>
+</body>
+</html>

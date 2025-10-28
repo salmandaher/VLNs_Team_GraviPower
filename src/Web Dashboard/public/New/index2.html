@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solid Gravity Energy Storage System</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>   
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">Solid Gravity Energy Storage System</h1>
+            <br>
+            <small  class="header-content" style="text_align: right; color:cyan"><i>By <u> <strong> VLNs</strong></u></i></small>
+            <div class="header-info">
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span id="connectionText">Connecting...</span>
+                </div>
+                <div class="timestamp" id="timestamp"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container"> 
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>System Status</h3>
+                <div class="status-grid">
+                    <!-- <div class="status-card">
+                        <label>Voltage</label>
+                            <span class="current-value" id="voltage2">--.- V</span>
+                    </div> -->
+                    <div class="status-card">
+                        <label>Encoder Position</label>
+                            <span class="current-value" id="encoder2">--.- V</span>
+                    </div>
+ 		            <div class="status-card">
+                        <label>Car Passed</label>
+                        <div class="mode-indicator" id="modeIndicator">
+                            <span class="mode-badge" id="car_passed"> NO </span>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <label>System Mode</label>
+                        <div class="mode-indicator" id="modeIndicator2">
+                            <span class="mode-badge" id="mode">IDLE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Control Panel</h3>
+                <div class="control-buttons">
+                    <button class="btn btn-danger btn-emergency" id="forceStopBtn"style="display:none">
+                        <span class="btn-icon">⛔</span>
+                        Emergency Stop
+                    </button>
+                    <button class="btn btn-success" id="startChargeBtn">
+                        <span class="btn-icon">⚡</span>
+                         Charge Mode
+                    </button>
+                  
+                    <button class="btn btn-primary" id="startDischargeBtn" >
+                        <span class="btn-icon">🔋</span>
+                        Discharge Mode
+                    </button> 
+                  <button class="btn btn-warning" id="fastChargeBtn">
+                        <span class="btn-icon">🔋</span>
+                        Fast Charge Mode 
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>System Information</h3>
+                <div class="info-display">
+                    <div class="info-item">
+                        <label>Last Update:</label>
+                        <span id="lastUpdate">--:--:--</span>
+                    </div>
+                    <!-- <div class="info-item">
+                        <label>Data Points:</label>
+                        <span id="dataPointCount">0</span>
+                    </div> 
+                    <div class="info-item">
+                        <label>System Status:</label>
+                        <span id="systemStatus">Initializing...</span>
+                    </div> -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+         <!--   <div class="charts-container">
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <h3>Voltage Sensor Data</h3>
+                        <div class="chart-info">
+                            <span class="current-value" id="voltage">--.- V</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="voltageChart" ></canvas>
+                    </div>
+                </div>-->
+
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <h3>Encoder Position Data</h3>
+                        <div class="chart-info">
+                            <span class="current-value" id="encoder">---- pos</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="encoderChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+   <div id="action-feedback" class="text-center"></div>
+  
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processing command...</p>
+    </div> 
+
+  <!-- Socket.IO, jQuery, Bootstrap JS -->
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+
+
+// Voltage chart
+/*
+const voltageCtx = document.getElementById('voltageChart').getContext('2d');
+const voltageChart = new Chart(voltageCtx, {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [{
+      label: 'Voltage (V)',
+      data: [],
+      borderColor: 'rgba(0, 123, 255, 1)',
+      backgroundColor: 'rgba(0, 123, 255, 0.1)',
+      fill: true,
+      tension: 0.2
+    }]
+  },
+  options: {
+    scales: {
+      x: { display: false },
+      y: { beginAtZero: true }
+    }
+  }
+}); */
+
+// Encoder chart
+const encoderCtx = document.getElementById('encoderChart').getContext('2d');
+const encoderChart = new Chart(encoderCtx, {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [{
+      label: 'Encoder',
+      data: [],
+      borderColor: 'rgba(40, 167, 69, 1)',
+      backgroundColor: 'rgba(40, 167, 69, 0.1)',
+      fill: true,
+      tension: 0.2
+    }]
+  },
+  options: {
+    scales: {
+      x: { display: false },
+      y: { beginAtZero: true }
+    }
+  }
+});
+
+const MAX_POINTS = 50; // Show last 50 points
+
+function addData(chart, value) {
+  const now = new Date();
+  const label = now.toLocaleTimeString();
+
+  chart.data.labels.push(label);
+  chart.data.datasets[0].data.push(value);
+
+  // Keep only the last MAX_POINTS points
+  if (chart.data.labels.length > MAX_POINTS) {
+    chart.data.labels.shift();
+    chart.data.datasets[0].data.shift();
+  }
+  chart.update();
+}
+function updateTimestamp() {
+    const updateTime = () => {
+        const now = new Date();
+        document.getElementById('timestamp').textContent = now.toLocaleString();
+    };
+    updateTime();
+    setInterval(updateTime, 1000);
+}
+
+let connectedShow = false;
+    const socket = io();
+/*
+socket.on('voltage', data => {
+  document.getElementById('voltage').textContent = data.toFixed(2);
+  document.getElementById('voltage2').textContent = data.toFixed(2);
+addData(voltageChart, Number(data));
+});
+*/
+socket.on('encoder', data => {
+    
+
+    
+  document.getElementById('encoder').textContent = data.toFixed(0);
+  document.getElementById('encoder2').textContent = data.toFixed(0);
+  const now = new Date();
+  const timeString = now.toLocaleTimeString(); // Example: "8:34:00 PM"
+  document.getElementById('lastUpdate').textContent = timeString;
+/*
+  updateTimestamp();
+  addData(encoderChart, Number(data));
+      if(!connectedShow){
+showNotification('Connected to Energy Storage System' , 'success');
+connectedShow = true;
+}*/
+});
+
+    socket.on('mode', data => {
+      document.getElementById('mode').textContent = data;
+    });
+    
+ socket.on('car_passed', data => {
+      
+      if(data)
+      {
+          document.getElementById('car_passed').textContent = 'Yes';
+      }
+      else
+      {
+          document.getElementById('car_passed').textContent = 'No';
+      }
+    });
+
+    // Control Buttons
+ function showFeedback(msg, success) {
+  const el = document.getElementById('action-feedback');
+  
+  el.textContent = msg;
+  el.className = 'text-center ' + (success ? 'text-success' : 'text-danger');
+  modal.style.display = 'block';
+
+  document.getElementById('fastChargeBtn').onclick = () => {
+      socket.emit('fast', null, success => {
+        showNotification(success ? 'Fast Charging started!' : 'Failed to start discharging.', success ? 'success' : 'error');
+      });
+    };// Optional: auto-close after 2 seconds
+  setTimeout(() => {
+    modal.style.display = 'none';
+    el.textContent = '';
+  }, 2000);
+
+  // Manual close
+  closeBtn.onclick = function() {
+    modal.style.display = 'none';
+    el.textContent = '';
+  };
+  
+}
+   document.getElementById('forceStopBtn').onclick = () => {
+      socket.emit('force_stop', null, success => {
+        showNotification(success ? 'System force stopped!' : 'Failed to stop system.', success ? 'success' : 'error');
+      });
+    };
+    document.getElementById('startChargeBtn').onclick = () => {
+      socket.emit('charge', null, success => {
+        showNotification(success ? 'Charging started!' : 'Failed to start charging.', success ? 'success' : 'error');
+      });
+    };
+    document.getElementById('startDischargeBtn').onclick = () => {
+      socket.emit('discharge', null, success => {
+        showNotification(success ? 'Discharging started!' : 'Failed to start discharging.', success ? 'success' : 'error');
+      });
+    };
+
+document.getElementById('fastChargeBtn').onclick = () => {
+      socket.emit('fast', null, success => {
+        showNotification(success ? 'Fast Charging started!' : 'Failed to start discharging.', success ? 'success' : 'error');
+      });
+    };
+
+  </script>
+</body>
+
+</html>

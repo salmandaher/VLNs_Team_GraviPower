@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity Energy Storage Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <h1>Gravity Energy Storage System</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="connection-status" id="connectionStatus">
+                    <div class="status-indicator" id="statusIndicator"></div>
+                    <span id="statusText">Connecting...</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <!-- Overview Cards -->
+        <section class="overview-section">
+            <div class="overview-grid">
+                <!-- Voltage Card -->
+                <div class="overview-card voltage-card">
+                    <div class="card-header">
+                        <h3>Voltage</h3>
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </div>
+                    <div class="card-value">
+                        <span class="value" id="voltageValue">--</span>
+                        <span class="unit">V</span>
+                    </div>
+                    <div class="card-status" id="voltageStatus">Normal Range</div>
+                </div>
+
+                <!-- Encoder Card -->
+                <div class="overview-card encoder-card">
+                    <div class="card-header">
+                        <h3>Mass Position</h3>
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6"></path>
+                            <path d="m21 12-6-3-6 3-6-3"></path>
+                        </svg>
+                    </div>
+                    <div class="card-value">
+                        <span class="value" id="encoderValue">--</span>
+                        <span class="unit">pos</span>
+                    </div>
+                    <div class="card-status">Encoder Position</div>
+                </div>
+
+                <!-- Mode Card -->
+                <div class="overview-card mode-card">
+                    <div class="card-header">
+                        <h3>System Mode</h3>
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+                            <path d="M8.5 8.5v.01"></path>
+                            <path d="M16 15.5v.01"></path>
+                            <path d="M12 12v.01"></path>
+                        </svg>
+                    </div>
+                    <div class="card-value">
+                        <span class="mode-badge" id="modeBadge">Idle</span>
+                    </div>
+                    <div class="card-status" id="systemStatus">System Ready</div>
+                </div>
+
+                <!-- Car Detection Card -->
+                <div class="overview-card car-card">
+                    <div class="card-header">
+                        <h3>Car Detection</h3>
+                        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                            <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                            <path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2"></path>
+                        </svg>
+                    </div>
+                    <div class="card-value">
+                        <div class="detection-indicator" id="carIndicator">
+                            <div class="pulse-ring"></div>
+                            <div class="pulse-dot"></div>
+                        </div>
+                    </div>
+                    <div class="card-status">
+                        <span>Cars detected: </span>
+                        <span id="carCounter">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Voltage Monitoring</h3>
+                        <button class="btn btn--sm btn--outline" id="resetVoltageChart">Reset</button>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="voltageChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Mass Position</h3>
+                        <button class="btn btn--sm btn--outline" id="resetEncoderChart">Reset</button>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="encoderChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Control Panel -->
+        <section class="control-section">
+            <div class="control-panel">
+                <h3>System Controls</h3>
+                <div class="control-buttons">
+                    <button class="btn btn--danger control-btn" id="forceStopBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="m15 9-6 6"></path>
+                            <path d="m9 9 6 6"></path>
+                        </svg>
+                        Emergency Stop
+                    </button>
+                    <button class="btn btn--primary control-btn" id="chargeBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.19"></path>
+                            <line x1="23" y1="13" x2="23" y2="11"></line>
+                            <line x1="1" y1="13" x2="1" y2="11"></line>
+                        </svg>
+                        Start Charging
+                    </button>
+                    <button class="btn btn--secondary control-btn" id="dischargeBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        Start Discharge
+                    </button>
+                </div>
+                <div class="feedback-area" id="feedbackArea"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Thank You Modal -->
+    <div class="modal-overlay" id="thankYouModal">
+        <div class="modal-content">
+            <div class="ripple-effect"></div>
+            <div class="modal-icon">
+                <svg class="heart-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </div>
+            <h2>Thank You!</h2>
+            <p>Your contribution helps power our sustainable energy system.</p>
+            <div class="energy-points">
+                <span>+</span>
+                <span class="points" id="energyPoints">1</span>
+                <span> Energy Point</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>Connecting to Energy System...</h2>
+            <p>Initializing dashboard components</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

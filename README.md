@@ -53,7 +53,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 ![Flowchart](https://github.com/ZainAlfai/VLNs-ZainAlfai-Testing/blob/main/white%20Python%20Node.png)
 
 ### Code
-You can view the full code [here](relative/path/to/your_code.py).
+You can view the full code [here](src/vlns/src/serverna.py).
 
 ## The PRIZM code:
 The PRIZM code is responsible for directly interfacing with hardware components to support the energy storage system's operation. It continuously reads encoder feedback to monitor the generator's rotational position and speed. The code controls the generator, turning it on during the fast charge mode and off during discharging. It detects when a car passes over the pseudo-bump to coordinate energy accumulation events. Furthermore, it manages the servo motor that controls the bump's state, flattening (deactivating) it when not charging and activating it during charging. Lastly, the PRIZM code reads ambient lighting sensor feedback to help determine system modes based on day/night conditions.

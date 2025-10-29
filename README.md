@@ -5,12 +5,31 @@ Robotic Gravity-based energy storage system designed for smart cities — conver
 
 This section provides an overview of the key mechanical components used in our project. Each mechanism plays a crucial role in ensuring efficient operation and durability. The associated STL files for 3D printing or modeling are included in the repository.
 
-## Pseudo-Bump
-The pseudo-bump mechanism functions as a shock absorber to reduce the impact of sudden forces during operation. It incorporates a one-way gear that allows motion in one direction only, preventing any reverse movement that could damage the system. This design helps protect the system by cushioning bumps effectively.  
-**STL file:** [pseudo_bump.stl](path/to/pseudo_bump.stl)
+## Pseudo-Bump Mechanism Overview
+
+The pseudo-bump functions by converting the mechanical energy from vehicles passing over it into usable energy for the system. It includes several key components that work in harmony to achieve this. The fixed joint acts as the pivot point for the bump's rotation when a vehicle passes over it. Inside this joint is an anti-reverse bearing (Rollman bearing) that prevents backward motion from affecting the gearbox when the bump resets. Once the vehicle passes, a return spring compresses under pressure and then pushes the bump back to its starting position. The moving joint allows the bump to articulate and flatten as vehicles pass, transferring the force efficiently to the fixed joint and maintaining system reliability.
+
+### Fixed Joint
+
+This section contains two STL parts: the connecting part between the fixed joint and the moving joint, and the bearing holder that houses the bearing linking to the Tetrix system.  
+**STL files:**  
+- [First Part (Fixed Joint) STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/first.stl)  
+- [Bearing Holder STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/stls/inner%20bearing%20to%20tetrix.stl)  
+
+### Moving Joint
+
+This section includes the STL part that forms the component between the moving joint and the free end of the bump, the part pressed directly by vehicles.  
+**STL file:**  
+- [Moving Joint Linkage STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/second.stl)  
+
+### The Base
+
+This section includes the STL part that forms the base, which holds the fixed and moving joints together, providing structural stability.  
+**STL file:**  
+- [Base Station STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/station.stl)  
 
 ## Motion Transmission and Torque Amplification
-This mechanism is designed to transmit motion and amplify torque between different parts of the system. By using gears and linkages optimized for power transfer, it ensures smooth and efficient operation with minimal energy loss. The torque amplification feature is critical for enhancing the mechanical advantage in the setup.  
+This mechanism is designed to transmit motion and amplify torque between different parts of the system. By using gears and linkages optimized for power transfer it ensures smooth and efficient operation with minimal energy loss. The torque amplification feature is critical for enhancing the mechanical advantage in the setup.  
 **STL file:** [motion_transmission_torque_amplification.stl](path/to/motion_transmission_torque_amplification.stl)
 
 ## Lifting System

@@ -1,6 +1,31 @@
 # Solid-Gravity-Energy-Storage-System
 Robotic Gravity-based energy storage system designed for smart cities — converts vehicle motion into storable mechanical energy and regenerates it electrically through controlled descent.
 
+# Mechanism Design
+
+This section provides an overview of the key mechanical components used in our project. Each mechanism plays a crucial role in ensuring efficient operation and durability. The associated STL files for 3D printing or modeling are included in the repository.
+
+## Pseudo-Bump
+The pseudo-bump mechanism functions as a shock absorber to reduce the impact of sudden forces during operation. It incorporates a one-way gear that allows motion in one direction only, preventing any reverse movement that could damage the system. This design helps protect the system by cushioning bumps effectively.  
+**STL file:** [pseudo_bump.stl](path/to/pseudo_bump.stl)
+
+## Motion Transmission and Torque Amplification
+This mechanism is designed to transmit motion and amplify torque between different parts of the system. By using gears and linkages optimized for power transfer, it ensures smooth and efficient operation with minimal energy loss. The torque amplification feature is critical for enhancing the mechanical advantage in the setup.  
+**STL file:** [motion_transmission_torque_amplification.stl](path/to/motion_transmission_torque_amplification.stl)
+
+## Lifting System
+The lifting system provides controlled vertical movement to raise or lower components as needed. It is engineered to offer stability and precision, utilizing robust actuators and supports to handle loads without compromising performance.  
+**STL file:** [lifting_system.stl](path/to/lifting_system.stl)
+
+## Connecting and Disconnecting Mechanism
+This mechanism allows for the seamless connection and disconnection of various subsystems. It is designed for reliability and ease of use, enabling quick assembly or disassembly without tools. This feature aids in maintenance and modular upgrades.  
+**STL file:** [connecting_disconnecting_mechanism.stl](path/to/connecting_disconnecting_mechanism.stl)
+
+## Motor Gearbox
+The motor gearbox serves to adjust the motor output speed and torque to desired levels. It employs a gear reduction system that balances speed with mechanical power, optimizing performance for the specific application needs.  
+**STL file:** [motor_gearbox.stl](path/to/motor_gearbox.stl)
+
+
 # The coding of the solution
 ## The main control code (the Python code)
 

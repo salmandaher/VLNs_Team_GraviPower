@@ -94,6 +94,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 
 ### Code
 You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/Esp_Node/Esp_Node.ino).
+
 ---
 ## The Dashboard codes:
 
@@ -396,7 +397,7 @@ $$
 
 This assumes revenue accumulates linearly and no extra costs occur during the 2 years.
 
-
+---
 
 # Project Challenges
 

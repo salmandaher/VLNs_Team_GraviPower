@@ -120,18 +120,6 @@ Since our project involves multiple controllers and a web-based dashboard, we im
 
 In the following sections, we explain the ROS structure that underpins the operation of our project — including detailed descriptions of each ROS node, how the nodes communicate with one another, and the types of information exchanged between them.
 
----
-
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Python Node](#python-node)
-3. [PRIZM Node](#prizm-node)
-4. [ESP Node](#esp-node)
-5. [Dashboard Node](#dashboard-node)
-6. [Launch File](#launch-file)
-
----
-
 ## Introduction
 
 Our ROS system consists of four main nodes that communicate with each other to manage the overall functionality of the project, these nodes are in the **vlns** ROS package in the catkin workspace:
@@ -149,9 +137,9 @@ Our ROS system consists of four main nodes that communicate with each other to m
   Responsible for displaying system values obtained from the controllers’ sensor readings. It also allows manual mode switching to adjust system behavior.
 
 
-The following **rqt graph** illustrates the communication links and message flow between the nodes in our ROS system, which will be explained in details later on:
+The following **rqt graph** illustrates the communication links and message flow between the nodes in our ROS system, which will be explained in detail later on:
 
-![ROS Node Graph](images/rqt.png)
+![ROS Node Graph](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/rosgraph.png)
 
 
 To start the project, we open a terminal and launch the **ROS master** using the following command:
@@ -249,7 +237,7 @@ The program on the PRIZM controller is responsible for several key tasks, in add
 ### Communication with the ROS Master
 The **PRIZM node** communicates with the **ROS Master** via a USB serial connection on port `/dev/ttyUSB0` with a baud rate of **57600**.  
 
-To initiate this connection we use the following terminal command:
+To initiate this connection, we use the following terminal command:
 ```bash
 rosrun rosserial_python serial_node.py /dev/ttyUSB0 _baud:= 57600
 ```
@@ -311,7 +299,7 @@ It participates in multiple ROS communications with other nodes to ensure accura
 ---
 
 ### Communication with the ROS Master
-The dashboard is a web interface accessible from any device on the network. The dashboar web client connects to the ROS master through a Socket.IO server, which runs on the Raspberry Pi. it connects with the IP adress of the Raspberry Pi on the network through the port 3000.
+The dashboard is a web interface accessible from any device on the network. The dashboard web client connects to the ROS master through a Socket.IO server, which runs on the Raspberry Pi. It connects with the IP address of the Raspberry Pi on the network through port 3000.
 
 This is the terminal command for initiating the connection.
 ```bash
@@ -328,87 +316,7 @@ After running the **roscore** and sourcing the terminal, we launch the entire sy
 ```bash
 roslaunch vlns sges.launch
 ```
-
-## Payback Time and Annual Revenue Calculation
-
-The project's annual revenue from produced electricity is calculated using:
-
-$$
-R_{year} = \frac{E_{year}}{1000} \times 128.8
-$$
-
-Where:
-- $R_{year}$ is the yearly revenue in dollars.
-- $E_{year}$ is the total energy generated yearly in watt-hours (Wh).
-- 128.8 is the price in dollars per 1000 kWh (where 1 kWh = 1000 Wh).
-
-The payback time $T$ (in years) is calculated as:
-
-$$
-T = \frac{\text{Total Project Cost}}{R_{year}}
-$$
-
-Where:
-- **Total Project Cost** is the full installation and equipment cost.
-- $R_{year}$ is as defined above.
-
-### Example:
-
-If your system generates $E_{year} = 40\,000$ Wh per year, the yearly revenue is:
-
-$$
-R_{year} = \frac{40\,000}{1000} \times 128.8 = 40 \times 128.8 = 5\,152\,\text{USD}
-$$
-
-If the total project cost is $59\,000$ USD, the payback time is:
-
-$$
-T = \frac{59\,000}{5\,152} \approx 11.46\,\text{years}
-$$
-
-## ROI Calculation Method
-
-ROI formula for your project:
-
-$$
-ROI = \frac{\text{Net Profit}}{\text{Cost of Investment}} \times 100
-$$
-
-### our study case
-
-- **Power used per day:** $17\, \text{LEDs} \times 40\,\text{W} \times 6\,\text{h} = 4,080\,\text{Wh/day} = 4.08\,\text{kWh/day}$
-- **Yearly usage:** $4.08\,\text{kWh/day} \times 365 = 1,489.2\,\text{kWh/year}$
-- **Annual value at $128$/1,000 kWh:** 
-  $$
-  \text{Annual Value} = \frac{1,489.2}{1,000} \times 128 = \$190.63
-  $$
-
-### Homs City Data
-
-- **Total investment cost:** \$8,648
-- **Annual energy output:** $1,489.2\,\text{kWh/year}$
-- **Estimated benefit:** $\$190.63$
-
-### ROI for Year 1:
-
-$$
-ROI_{\text{Year 1}} = \frac{190.63}{8,648} \times 100 \approx 2.2\\%
-$$
-
-### ROI After 2 Years
-
-Assuming similar annual revenue the ROI after 2 years is:
-
-$$
-ROI_{\text{Year 2}} = \frac{2 \times 190.63}{8,648} \times 100 \approx 4.4\\%
-$$
-
-This assumes revenue accumulates linearly and no extra costs occur during the 2 years.
-
-
-
 # Business Calculations
-
 ## Payback Time and Annual Revenue Calculation
 
 The project's annual revenue from produced electricity is calculated using:
@@ -454,7 +362,7 @@ $$
 ROI = \frac{\text{Net Profit}}{\text{Cost of Investment}} \times 100
 $$
 
-### our study case
+## Real-Example Study
 
 - **Power used per day:** $17\, \text{LEDs} \times 40\,\text{W} \times 6\,\text{h} = 4,080\,\text{Wh/day} = 4.08\,\text{kWh/day}$
 - **Yearly usage:** $4.08\,\text{kWh/day} \times 365 = 1,489.2\,\text{kWh/year}$
@@ -487,21 +395,21 @@ This assumes revenue accumulates linearly and no extra costs occur during the 2 
 
 
 
-## Project Challenges
+# Project Challenges
 
-### Tower Design Evolution
+## Tower Design Evolution
 
 Throughout the project's development, the tower structure underwent multiple design iterations due to various challenges. Below are three old versions of the tower with explanations on why each was changed:
 
-#### Version 1
+### Version 1
 ![Tower Version 1](path/to/tower_v1.jpg)
 The initial design was unstable under load and had insufficient structural support, which risked safety and durability. This led to redesigning for enhanced stability.
 
-#### Version 2
+### Version 2
 ![Tower Version 2](path/to/tower_v2.jpg)
 The second design improved stability but was too heavy and complicated to manufacture with available resources, increasing costs and assembly times.
 
-#### Version 3
+### Version 3
 ![Tower Version 3](path/to/tower_v3.jpg)
 This iteration reduced weight and simplified construction, but material choice led to corrosion issues, prompting a switch to more resistant materials in the final design.
 

@@ -11,7 +11,7 @@ This Python code serves as the central control unit for our system. It manages t
 The Python script performs critical functions to optimize the operation of the gravity-based energy storage system:
 
 1. It calculates the generator's rotational speed during discharging using encoder feedback.
-2. It applies a PID (Proportional-Integral-Derivative) control algorithm to regulate the generator speed at the point of maximum power generation efficiency. The PID output is fed to the PWM driver to adjust the electrical load dynamically. The general form of a PID controller is expressed as:
+2. It applies a PID (Proportional-Integral-Derivative) control algorithm to regulate the generator speed at the point of maximum power generation efficiency. The PID output is fed to the PWM driver to dynamically adjust the electrical load. The general form of a PID controller is expressed as:
 
 $$
 u(t) = K_p e(t) + K_i \int_0^t e(\tau) d\tau + K_d \frac{d e(t)}{d t}
@@ -412,7 +412,7 @@ $$
 
 ### ROI After 2 Years
 
-Assuming similar annual revenue the ROI after 2 years is:
+Assuming similar annual revenue, the ROI after 2 years is:
 
 $$
 ROI_{\text{Year 2}} = \frac{2 \times 190.63}{8,648} \times 100 \approx 4.4\\%
@@ -420,6 +420,25 @@ $$
 
 This assumes revenue accumulates linearly and no extra costs occur during the 2 years.
 
+
+
+## Project Challenges
+
+### Tower Design Evolution
+
+Throughout the project's development, the tower structure underwent multiple design iterations due to various challenges. Below are three old versions of the tower with explanations on why each was changed:
+
+#### Version 1
+![Tower Version 1](path/to/tower_v1.jpg)
+The initial design was unstable under load and had insufficient structural support, which risked safety and durability. This led to redesigning for enhanced stability.
+
+#### Version 2
+![Tower Version 2](path/to/tower_v2.jpg)
+The second design improved stability but was too heavy and complicated to manufacture with available resources, increasing costs and assembly times.
+
+#### Version 3
+![Tower Version 3](path/to/tower_v3.jpg)
+This iteration reduced weight and simplified construction, but material choice led to corrosion issues, prompting a switch to more resistant materials in the final design.
 
 
 

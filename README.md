@@ -175,7 +175,7 @@ We built our own **custom service structure**, which includes:
 - A **string variable** in the request message to specify the selected mode.  
 - A **boolean variable** in the response message that returns `true` to indicate successful operation.  
 
-You can view the service structure file [here](path/to/your/service/file.srv).
+You can view the service structure file [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/srv/sges.srv).
 
 
 
@@ -313,7 +313,7 @@ node app.js
 
 ## Launch File
 
-To simplify the process of running the project, we created a **launch file** — [**sges.launch**](path/to/your/launch/file/sges.launch) — which automatically starts all the required nodes.  
+To simplify the process of running the project, we created a **launch file** — [**sges.launch**](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/launch/sges.launch) — which automatically starts all the required nodes.  
 
 After running the **roscore** and sourcing the terminal, we launch the entire system with a single command:
 ```bash

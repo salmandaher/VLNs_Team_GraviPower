@@ -76,6 +76,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 
 ### Code
 You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/PRIZM_node/PRIZM_node.ino).
+
 ---
 ## The ESP code:
 The ESP code functions as the core controller for mechanical and electrical actuations within the energy storage system. It manages the disconnecting and connecting mechanism, dynamically linking the main pulley to the generator during discharge or fast charge modes, and to the gearbox in charge or max charge modes. The code also controls the electrical load system by activating the LED lights during discharge mode and deactivating it otherwise. Furthermore, the ESP code modulates the PWM driver (BTS), adjusting the electrical load on the generator in response to PID control signals computed externally, ensuring precise and efficient energy management.

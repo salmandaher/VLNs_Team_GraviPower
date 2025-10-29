@@ -55,6 +55,8 @@ Below is a flowchart illustrating the workflow and main components of the code:
 ### Code
 You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/serverna.py).
 
+---
+
 ## The PRIZM code:
 The PRIZM code is responsible for directly interfacing with hardware components to support the energy storage system's operation. It continuously reads encoder feedback to monitor the generator's rotational position and speed. The code controls the generator, turning it on during the fast charge mode and off during discharging. It detects when a car passes over the pseudo-bump to coordinate energy accumulation events. Furthermore, it manages the servo motor that controls the bump's state, flattening (deactivating) it when not charging and activating it during charging. Lastly, the PRIZM code reads ambient lighting sensor feedback to help determine system modes based on day/night conditions.
 
@@ -74,7 +76,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 
 ### Code
 You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/PRIZM_node/PRIZM_node.ino).
-
+---
 ## The ESP code:
 The ESP code functions as the core controller for mechanical and electrical actuations within the energy storage system. It manages the disconnecting and connecting mechanism, dynamically linking the main pulley to the generator during discharge or fast charge modes, and to the gearbox in charge or max charge modes. The code also controls the electrical load system by activating the LED lights during discharge mode and deactivating it otherwise. Furthermore, the ESP code modulates the PWM driver (BTS), adjusting the electrical load on the generator in response to PID control signals computed externally, ensuring precise and efficient energy management.
 
@@ -91,7 +93,7 @@ Below is a flowchart illustrating the workflow and main components of the code:
 
 ### Code
 You can view the full code [here](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/vlns/src/Esp_Node/Esp_Node.ino).
-
+---
 ## The Dashboard codes:
 
 The Dashboard integrates frontend and backend components to provide a real-time, interactive user interface for the energy storage system. It combines HTML for structure, a custom CSS stylesheet for tailored styling and responsive design, and Node.js for backend communication management using server-side JavaScript. This interface displays current system status metrics, such as the height of the mass and the number of cars passing over the bump, and allows users to manually select or override operating modes through an intuitive interactive dashboard.
@@ -114,6 +116,7 @@ You can view the codes here:
 - [CSS Code](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/Web%20Dashboard/public/New/style.css)
 - [Node.js Code](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/src/Web%20Dashboard/app.js)
 
+---
 # ROS Implementation
 
 Since our project involves multiple controllers and a web-based dashboard, we implemented the concept of **ROS (Robot Operating System)** to facilitate communication between these controllers and maintain an organized and synchronized system workflow. The ROS version used in this project is **ROS 1 (Noetic)**
@@ -158,7 +161,7 @@ Source devel/setup.bash
 
 The **Raspberry Pi** device (**Raspberry Pi 4**, running **Debian Bookworm**) serves as the **ROS Master** in our system. It hosts the main Python node that manages communication and coordination among all other nodes through various **services**, **publishers**, and **subscribers**.
 
----
+
 
 ### Services
 - **Mode Service:**  
@@ -172,7 +175,7 @@ We built our own **custom service structure**, which includes:
 
 You can view the service structure file [here](path/to/your/service/file.srv).
 
----
+
 
 ### Publishers
 - **`/mode`:**  
@@ -187,7 +190,7 @@ You can view the service structure file [here](path/to/your/service/file.srv).
 - **`/bts_value`:**  
   The node processes mass falling speed readings, applies a PID algorithm to compute the BTS value, and publishes it to control the BTS system—optimizing load management and fall speed.
 
----
+
 
 ### Subscribers
 - **`/encoder`:**  
@@ -197,7 +200,6 @@ You can view the service structure file [here](path/to/your/service/file.srv).
 - **`/light_sensor`:**  
    Reads light intensity data for use in mode adjustments.
 
----
 
 ### Communication with the ROS Master
 The Python code runs as a ROS node on the Raspberry Pi. It registers with the ROS master using the ROS network protocol (ROS Master URI). The node uses ROS client libraries (rospy) to publish and subscribe to topics, provide or call services, and interact with other ROS nodes.
@@ -214,7 +216,7 @@ rosrun vlns serverna.py
 The **PRIZM node** is one of the two nodes in the system running Arduino code.  
 The program on the PRIZM controller is responsible for several key tasks, in addition to participating in multiple ROS communications with other nodes.
 
----
+
 
 ### Publishers
 - **`/encoder`:**  
@@ -226,13 +228,13 @@ The program on the PRIZM controller is responsible for several key tasks, in add
 - **`/car_passed`:**  
   The code monitors the push button mounted on the bump and detects when it is pressed (FALLING state). These readings are published and subscribed to by other nodes in the system to track passing vehicles.
 
----
+
 
 ### Subscribers
 - **`/mode`:**  
   The node subscribes to the mode topic published by the Python node. It adjusts its behavior based on the current mode — whether the system is **charging**, **discharging**, or **fast charging**.
 
----
+
 
 ### Communication with the ROS Master
 The **PRIZM node** communicates with the **ROS Master** via a USB serial connection on port `/dev/ttyUSB0` with a baud rate of **57600**.  
@@ -248,14 +250,14 @@ rosrun rosserial_python serial_node.py /dev/ttyUSB0 _baud:= 57600
 The **ESP node** is another endpoint in the ROS communication system running Arduino code.  
 It is responsible for controlling the switching mechanism and managing the load on the generator, which requires key information from other ROS nodes.
 
----
+
 
 ### Subscribers
 - **`/mode`:**  
   Similar to the PRIZM node, this node subscribes to the **mode** topic published by the Python node.  
   It adjusts its behavior dynamically based on the current mode updates received from the ROS network.
 
----
+
 
 ### Communication with the ROS Master
 The **ESP node** communicates with the **ROS Master** over a **TCP connection via Wi-Fi**.  
@@ -272,14 +274,13 @@ rosrun rosserial_python serial_node.py tcp _baud:=115200
 The **Dashboard node** is an essential component of the ROS network that allows users to monitor system values and manually control its behavior.  
 It participates in multiple ROS communications with other nodes to ensure accurate data display and responsive control.
 
----
+
 
 ### Services
 - **Mode Service:**  
   When the user changes the mode manually using one of the mode buttons on the dashboard, the Dashboard node sends a service request to the Python node.  
   This request updates the global system mode to the newly selected one.
 
----
 
 ### Subscribers
 - **`/mode`:**  
@@ -296,7 +297,7 @@ It participates in multiple ROS communications with other nodes to ensure accura
 - **`/height`:**  
   Subscribes to the **height** topic published by the Python node and displays the current height of the mass on the dashboard.
 
----
+
 
 ### Communication with the ROS Master
 The dashboard is a web interface accessible from any device on the network. The dashboard web client connects to the ROS master through a Socket.IO server, which runs on the Raspberry Pi. It connects with the IP address of the Raspberry Pi on the network through port 3000.
@@ -316,6 +317,7 @@ After running the **roscore** and sourcing the terminal, we launch the entire sy
 ```bash
 roslaunch vlns sges.launch
 ```
+---
 # Business Calculations
 ## Payback Time and Annual Revenue Calculation
 

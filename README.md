@@ -116,7 +116,7 @@ You can view the codes here:
 
 # ROS Implementation
 
-Since our project involves multiple controllers and a web-based dashboard, we implemented the concept of **ROS (Robot Operating System)** to facilitate communication between these controllers and maintain an organized and synchronized system workflow.  
+Since our project involves multiple controllers and a web-based dashboard, we implemented the concept of **ROS (Robot Operating System)** to facilitate communication between these controllers and maintain an organized and synchronized system workflow. The ROS version used in this project is **ROS 1 (Noetic)**
 
 In the following sections, we explain the ROS structure that underpins the operation of our project — including detailed descriptions of each ROS node, how the nodes communicate with one another, and the types of information exchanged between them.
 
@@ -124,18 +124,19 @@ In the following sections, we explain the ROS structure that underpins the opera
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Raspberry Pi Node](#raspberry-pi-node)
+2. [Python Node](#python-node)
 3. [PRIZM Node](#prizm-node)
 4. [ESP Node](#esp-node)
 5. [Dashboard Node](#dashboard-node)
+6. [Launch File](#launch-file)
 
 ---
 
 ## Introduction
 
-Our ROS system consists of four main nodes that communicate with each other to manage the overall functionality of the project:
+Our ROS system consists of four main nodes that communicate with each other to manage the overall functionality of the project, these nodes are in the **vlns** ROS package in the catkin workspace:
 
-- **Raspberry Pi Node:**  
+- **Python Node:**  
   Runs a Python program that serves as the central control of the system. It performs key calculations and manages the behavior of other nodes through ROS communication.
 
 - **PRIZM Node:**  
@@ -147,19 +148,27 @@ Our ROS system consists of four main nodes that communicate with each other to m
 - **Dashboard Node:**  
   Responsible for displaying system values obtained from the controllers’ sensor readings. It also allows manual mode switching to adjust system behavior.
 
----
 
-### ROS Node Connection Graph
-The following **rqt graph** illustrates the communication links and message flow between the nodes in our ROS system:
+The following **rqt graph** illustrates the communication links and message flow between the nodes in our ROS system, which will be explained in details later on:
 
 ![ROS Node Graph](images/rqt.png)
 
 
+To start the project, we open a terminal and launch the **ROS master** using the following command:
+```bash
+roscore
+```
+After that, each node should be started separately in a new terminal tab.
+Before running any node, we source the terminal from the catkin workspace:
+```bash
+Source devel/setup.bash
+```
+
 ---
 
-## Raspberry Pi Node
+## Python Node
 
-The **Raspberry Pi** device serves as the **ROS Master** in our system. It hosts the main Python node that manages communication and coordination among all other nodes through various **services**, **publishers**, and **subscribers**.
+The **Raspberry Pi** device (**Raspberry Pi 4**, running **Debian Bookworm**) serves as the **ROS Master** in our system. It hosts the main Python node that manages communication and coordination among all other nodes through various **services**, **publishers**, and **subscribers**.
 
 ---
 
@@ -168,6 +177,12 @@ The **Raspberry Pi** device serves as the **ROS Master** in our system. It hosts
   The Python node participates in a mode management service with the Dashboard node.  
   When the mode is changed manually from the Dashboard, the Dashboard node sends a service request to the Python node containing the selected mode in the request message.  
   The Python node then updates the global variable representing the current mode and returns a success response to the Dashboard node.
+
+We built our own **custom service structure**, which includes:  
+- A **string variable** in the request message to specify the selected mode.  
+- A **boolean variable** in the response message that returns `true` to indicate successful operation.  
+
+You can view the service structure file [here](path/to/your/service/file.srv).
 
 ---
 
@@ -196,6 +211,16 @@ The **Raspberry Pi** device serves as the **ROS Master** in our system. It hosts
 
 ---
 
+### Communication with the ROS Master
+The Python code runs as a ROS node on the Raspberry Pi. It registers with the ROS master using the ROS network protocol (ROS Master URI). The node uses ROS client libraries (rospy) to publish and subscribe to topics, provide or call services, and interact with other ROS nodes.
+
+This is the terminal command for initiating the connection.
+```bash
+rosrun vlns serverna.py
+```
+---
+
+
 ## PRIZM Node
 
 The **PRIZM node** is one of the two nodes in the system running Arduino code.  
@@ -221,6 +246,15 @@ The program on the PRIZM controller is responsible for several key tasks, in add
 
 ---
 
+### Communication with the ROS Master
+The **PRIZM node** communicates with the **ROS Master** via a USB serial connection on port `/dev/ttyUSB0` with a baud rate of **57600**.  
+
+To initiate this connection we use the following terminal command:
+```bash
+rosrun rosserial_python serial_node.py /dev/ttyUSB0 _baud:= 57600
+```
+---
+
 ## ESP Node
 
 The **ESP node** is another endpoint in the ROS communication system running Arduino code.  
@@ -233,6 +267,16 @@ It is responsible for controlling the switching mechanism and managing the load 
   Similar to the PRIZM node, this node subscribes to the **mode** topic published by the Python node.  
   It adjusts its behavior dynamically based on the current mode updates received from the ROS network.
 
+---
+
+### Communication with the ROS Master
+The **ESP node** communicates with the **ROS Master** over a **TCP connection via Wi-Fi**.  
+It connects to the Raspberry Pi device at the IP address **192.168.43.47** through **port 11411**, with a baud rate of **115200**.
+
+This is the terminal command for initiating the connection.
+```bash
+rosrun rosserial_python serial_node.py tcp _baud:=115200
+```
 ---
 
 ## Dashboard Node
@@ -263,6 +307,27 @@ It participates in multiple ROS communications with other nodes to ensure accura
 
 - **`/height`:**  
   Subscribes to the **height** topic published by the Python node and displays the current height of the mass on the dashboard.
+
+---
+
+### Communication with the ROS Master
+The dashboard is a web interface accessible from any device on the network. The dashboar web client connects to the ROS master through a Socket.IO server, which runs on the Raspberry Pi. it connects with the IP adress of the Raspberry Pi on the network through the port 3000.
+
+This is the terminal command for initiating the connection.
+```bash
+node app.js
+```
+
+---
+
+## Launch File
+
+To simplify the process of running the project, we created a **launch file** — [**sges.launch**](path/to/your/launch/file/sges.launch) — which automatically starts all the required nodes.  
+
+After running the **roscore** and sourcing the terminal, we launch the entire system with a single command:
+```bash
+roslaunch vlns sges.launch
+```
 
 ## Payback Time and Annual Revenue Calculation
 

@@ -460,15 +460,15 @@ Throughout the project's development, the tower structure underwent multiple des
 
 ### Version 1
 ![Tower Version 1](path/to/tower_v1.jpg)
-The initial design was unstable under load and had insufficient structural support, which risked safety and durability. This led to redesigning for enhanced stability.
+The first version of the tower was made with a simple concept, four main columns where each two adjacent columns are connected with each other with flat beams.
 
 ### Version 2
 ![Tower Version 2](path/to/tower_v2.jpg)
-The second design improved stability but was too heavy and complicated to manufacture with available resources, increasing costs and assembly times.
+The first version of the tower was somehow steady, but to increase its stability according to engineering concepts we removed the straight beams that connect every two adjacent channels and replaced them with triangular connections, to increase stability and efficiency reaching the second design version of the tower.
 
 ### Version 3
 ![Tower Version 3](path/to/tower_v3.jpg)
-This iteration reduced weight and simplified construction, but material choice led to corrosion issues, prompting a switch to more resistant materials in the final design.
+The second version seemed to work well at first, but we faced some problems with sitting it without tilting, it also costs too many Tetrix parts, which made us think of a solution for this problem leading us again to the third and final version of the tower, having a strong base to correct tilting, and high efficiency using fewer Tetrix parts.
 
 
 

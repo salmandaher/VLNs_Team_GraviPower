@@ -459,15 +459,15 @@ This assumes revenue accumulates linearly and no extra costs occur during the 2 
 Throughout the project's development, the tower structure underwent multiple design iterations due to various challenges. Below are three old versions of the tower with explanations on why each was changed:
 
 ### Version 1
-![Tower Version 1](path/to/tower_v1.jpg)
+![Tower Version 1](imgs/tower_v1.jpg)
 The first version of the tower was made with a simple concept, four main columns where each two adjacent columns are connected with each other with flat beams.
 
 ### Version 2
-![Tower Version 2](path/to/tower_v2.jpg)
+![Tower Version 2](imgs/tower_v2.jpg)
 The first version of the tower was somehow steady, but to increase its stability according to engineering concepts we removed the straight beams that connect every two adjacent channels and replaced them with triangular connections, to increase stability and efficiency reaching the second design version of the tower.
 
 ### Version 3
-![Tower Version 3](path/to/tower_v3.jpg)
+![Tower Version 3](imgs/tower_v3.jpg)
 The second version seemed to work well at first, but we faced some problems with sitting it without tilting, it also costs too many Tetrix parts, which made us think of a solution for this problem leading us again to the third and final version of the tower, having a strong base to correct tilting, and high efficiency using fewer Tetrix parts.
 
 

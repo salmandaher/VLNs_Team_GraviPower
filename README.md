@@ -89,11 +89,11 @@ Attached directly to the mass, this pulley serves multiple purposes: it protects
 
 ## Connecting and Disconnecting Mechanism
 
-In our project, it is essential to disconnect the main pulley from the gearbox and connect it to the energy generation system, and the opposite, which consists of the motor and its dedicated gearbox. This requirement led to the development of a specialized connecting and disconnecting mechanism.
+to switch to the discharging mode, the main pulley should be disconnected from the gearbox and connected to the energy generation system, which consists of the motor and its dedicated gearbox. This requirement led to the development of a specialized connecting and disconnecting mechanism.
 
-The core component consists of 3D-printed PLA parts that resemble circular saw-tooth gears designed to transfer energy unidirectionally. When the main pulley is shifted towards the gearbox side, two opposing saw-tooth parts engage, allowing the gearbox to drive the pulley. Conversely, when the pulley is pushed in the opposite direction, the saw-tooth parts disengage on the gearbox side and engage on the motor side gearbox, thus transferring motion accordingly.
+The core component consists of 3D-printed PLA parts that resemble circular saw-tooth gears designed to transfer energy unidirectionally. When the main pulley is shifted towards the gearbox side, two opposing saw-tooth parts engage, allowing the gearbox to drive the pulley. Conversely, when the pulley is pushed in the opposite direction, the saw-tooth parts disengage on the gearbox side and engage on the motor side gearbox, thus transferring motion to the motor side.
 
-To facilitate the movement between these two positions, we utilize an HTS-35H Servo motor with a torque capacity of 35 KG·cm. This servo motor is connected to a rack and pinion mechanism that converts the servo’s rotational input into linear motion, enabling precise and reliable movement of the connecting and disconnecting assembly. The servo is controlled by an ESP32 core board alongside a multifunctional extension board for efficient operation.
+To facilitate the movement between these two positions, we utilize an HTS-35H Servo motor with a torque capacity of 35 KG·cm. This servo motor is connected to a rack and pinion mechanism that converts the servo’s rotational motion into linear motion, enabling precise and reliable movement of the connecting and disconnecting assembly. The servo is controlled by an ESP32 core board alongside a multifunctional extension board for efficient operation.
 
 ### Saw-Tooth Gears
 
@@ -114,7 +114,7 @@ The rack and pinion mechanism translates the servo motor’s rotational motion i
 ---
 
 ## Motor Gearbox
-The motor gearbox serves to adjust the motor output speed and torque to desired levels. It employs a gear reduction system that balances speed with mechanical power, optimizing performance for the specific application needs.  
+The motor gearbox is set to adjust the motor output speed and torque to a desired level. It applies a 1.5 speed amplification factor, combined with th3 2:1 speed amplification applied by the mass pulley system, the total becomes a 3:1 speed amplification factor rotating the motor from the mass' fall to produce higher voltage values.  
 
 ![Motor Gearbox](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/bf33870ca1736469e62d55921a4af209934893d6/imgs/Motor%20gearbox%20(2).jpg)
 
@@ -123,14 +123,14 @@ The motor gearbox serves to adjust the motor output speed and torque to desired 
 # The coding of the solution
 ## The main control code (the Python code)
 
-This Python code serves as the central control unit for our system. It manages the system’s operational states, including charging, discharging, and fast charge modes, by coordinating commands to various controllers such as the PRIZM and the ESP. The code continuously monitors sensor data to make decisions that ensure smooth transitions between modes and optimize system performance. Additionally, it implements a PID control algorithm to regulate the descent speed of the mass, maximizing energy generation efficiency by dynamically adjusting the electrical load without wasting energy through conventional braking. The program also supports real-time monitoring and manual mode control via a connected web-based interface, enabling effective management of the entire energy storage process.
+running on the Raspberry Pi 4 device, this Python code serves as the central control unit for our system. It manages the system’s operational states, including charging, discharging, and fast charge modes, by coordinating commands to various controllers such as the PRIZM and the ESP. The code continuously monitors sensor data to make decisions that ensure smooth transitions between modes and optimize system performance. Additionally, it implements a PID control algorithm to regulate the descent speed of the mass, maximizing energy generation efficiency by dynamically adjusting the electrical load without wasting energy through conventional braking. The program also supports real-time monitoring and manual mode control via a connected web-based interface, enabling effective management of the entire energy storage process.
 
 ### Main Tasks of the Python Control Code
 
 The Python script performs critical functions to optimize the operation of the gravity-based energy storage system:
 
 1. It calculates the generator's rotational speed during discharging using encoder feedback.
-2. It applies a PID (Proportional-Integral-Derivative) control algorithm to regulate the generator speed at the point of maximum power generation efficiency. The PID output is fed to the PWM driver to dynamically adjust the electrical load. The general form of a PID controller is expressed as:
+2. It applies a PID (Proportional-Integral-Derivative) control algorithm to regulate the generator speed at the point of maximum power generation efficiency. The PID output is fed to the PWM BTS driver to dynamically adjust the electrical load. The general form of a PID controller is expressed as:
 
 $$
 u(t) = K_p e(t) + K_i \int_0^t e(\tau) d\tau + K_d \frac{d e(t)}{d t}

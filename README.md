@@ -184,7 +184,7 @@ The PRIZM code is responsible for directly interfacing with hardware components 
 1. Reading encoder feedback for generator monitoring.
 2. Controlling the generator state (activated during fast charge mode, deactivated during other modes).
 3. Detecting cars passing over the pseudo-bump.
-4. Managing the servo motor to flatten or activate the bump based on the mode.
+4. Managing the bump-servo motor to flatten or activate the bump based on the mode.
 5. Reading the lighting sensor to support automatic mode switching.
 
 

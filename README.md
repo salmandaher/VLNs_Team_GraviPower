@@ -49,13 +49,13 @@ This part of the project is critical as it ensures efficient transfer and amplif
 
 The first stage involves a gearbox with a 4:1 gear speeding ratio, providing speed amplification (which is 1:4 torque ratio). This speed amplification factor is necessary to counter the huge torque amplifaction factor of the next stage, keeping the torque amplification high just enough to lift the mass with the weight of the passing car.
 
-[Gearbox image](path/to/gearbox) 
+![Gearbox image](path/to/gearbox) 
 
 ### Worm Gear 
 
 The second stage is a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
 
-[Worm gear image](path/to/wormgear)
+![Worm gear image](path/to/wormgear)
 
 ---
 
@@ -65,7 +65,7 @@ The lifting system is responsible for managing the vertical movement of the mass
 
 ### Main Pulley (Spool)
 
-This is the central pulley around which the rope winds. Its radius directly affects the torque experienced in the system, playing a key role in the mechanical advantage and energy efficiency. During the project, we designed and tested three main versions of this pulley to optimize performance and durability.
+This is the central pulley which the rope winds around. Its radius directly affects the torque experienced in the system, playing a key role in the mechanical advantage and energy efficiency. During the project, we designed and tested three main versions of this pulley to optimize performance and durability.
 
 **STL files:**  
 - [Version 1 Pulley STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v1.0-01.stl)  
@@ -83,7 +83,7 @@ Two guiding pulleys are installed at the top of the tower. Their main function i
 
 Attached directly to the mass, this pulley serves multiple purposes: it protects the rope from excessive wear, improves the stability of the mass during motion, and doubles the torque applied when lifting. This crucial component helps regulate the discharge time, improving system reliability.
 
-kkk
+![Mass pulley image](path/to/masspulley)
 
 ---
 

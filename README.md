@@ -55,7 +55,7 @@ The first step involves a gearbox with a 2:1 gear ratio, providing speed amplifi
 
 The second step uses a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump and significantly increasing the mechanical advantage. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
 
-[https://github.com/salmandaher/VLNs_Team_GraviPower/blob/0817ff04903d763af26a9c54c416ef887e680cd4/imgs/Motor%20gearbox%20(2).jpg]
+kkk
 
 ---
 
@@ -83,7 +83,8 @@ Two guiding pulleys are installed at the top of the tower. Their main function i
 
 Attached directly to the mass, this pulley serves multiple purposes: it protects the rope from excessive wear, improves the stability of the mass during motion, and doubles the torque applied when lifting. This crucial component helps regulate the discharge time, improving system reliability.
 
-![Motor Gearbox](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/bf33870ca1736469e62d55921a4af209934893d6/imgs/Motor%20gearbox%20(2).jpg)
+kkk
+
 ---
 
 ## Connecting and Disconnecting Mechanism
@@ -114,7 +115,8 @@ The rack and pinion mechanism translates the servo motor’s rotational motion i
 
 ## Motor Gearbox
 The motor gearbox serves to adjust the motor output speed and torque to desired levels. It employs a gear reduction system that balances speed with mechanical power, optimizing performance for the specific application needs.  
-**STL file:** [motor_gearbox.stl](path/to/motor_gearbox.stl)
+
+![Motor Gearbox](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/bf33870ca1736469e62d55921a4af209934893d6/imgs/Motor%20gearbox%20(2).jpg)
 
 ---
 

@@ -1,6 +1,18 @@
 # Solid-Gravity-Energy-Storage-System
 Robotic Gravity-based energy storage system designed for smart cities — converts vehicle motion into storable mechanical energy and regenerates it electrically through controlled descent.
 
+# Project Video and Report
+
+Below is the high-quality version of the video we submitted to the WRO competition, showcasing our project in action.  
+[Embed YouTube Video Here]  
+<iframe width="560" height="315" src="YOUR_YOUTUBE_VIDEO_LINK_HERE" title="WRO Competition Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+You can also download and review the detailed project report we submitted:  
+**[Project Report (WRO Submission)](YOUR_REPORT_LINK_HERE)**
+
+---
+
+
 # Mechanism Design
 
 This section provides an overview of the key mechanical components used in our project. Each mechanism plays a crucial role in ensuring efficient operation and durability. The associated STL files for 3D printing or modeling are included in the repository.

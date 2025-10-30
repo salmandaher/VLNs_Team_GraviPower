@@ -55,7 +55,7 @@ The first step involves a gearbox with a 2:1 gear ratio, providing speed amplifi
 
 The second step uses a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump and significantly increasing the mechanical advantage. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
 
-**[Insert worm gear image here]**
+[https://github.com/salmandaher/VLNs_Team_GraviPower/blob/0817ff04903d763af26a9c54c416ef887e680cd4/imgs/Motor%20gearbox%20(2).jpg]
 
 ---
 

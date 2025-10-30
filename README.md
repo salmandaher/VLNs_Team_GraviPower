@@ -30,10 +30,21 @@ This section includes the STL part that forms the base, which holds the fixed an
 
 ---
 
-## Motion Transmission and Torque Amplification
-This mechanism is designed to transmit motion and amplify torque between different parts of the system. By using gears and linkages optimized for power transfer it ensures smooth and efficient operation with minimal energy loss. The torque amplification feature is critical for enhancing the mechanical advantage in the setup.  
-**STL file:** [motion_transmission_torque_amplification.stl](path/to/motion_transmission_torque_amplification.stl)
+## Motion Transmission and Torque Amplification (The Gearbox)
 
+This phase of the project is critical as it ensures efficient transfer and amplification of the torque necessary to lift the mass. The total torque amplification ratio achieved here is 20:1, an essential factor for the prototype’s performance. The motion transmission is divided into two main steps, each playing a specific role in the mechanism.
+
+### Gearbox (Step 1)
+
+The first step involves a gearbox with a 2:1 gear ratio, providing speed amplification. This gearbox is specifically designed for our prototype, providing smooth and reliable operation while efficiently increasing output speed. Its compact design and gear ratio make it ideal for the limited scale and precision required by our system.
+
+**[Insert gearbox photo here]**
+
+### Worm Gear (Step 2)
+
+The second step uses a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump and significantly increasing the mechanical advantage. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
+
+**[Insert worm gear image here]**
 ---
 
 ## Lifting System

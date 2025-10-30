@@ -4,7 +4,7 @@ Robotic Gravity-based energy storage system designed for smart cities — conver
 # Project Video and Report
 
 Below is the high-quality version of the video we submitted to the WRO competition, showcasing our project in action.  
-[Embed YouTube Video Here]  
+[https://youtu.be/KDbOAnvwZOE]  
 <iframe width="560" height="315" src="YOUR_YOUTUBE_VIDEO_LINK_HERE" title="WRO Competition Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 You can also download and review the detailed project report we submitted:  

@@ -45,22 +45,45 @@ This section includes the STL part that forms the base, which holds the fixed an
 
 This phase of the project is critical as it ensures efficient transfer and amplification of the torque necessary to lift the mass. The total torque amplification ratio achieved here is 20:1, an essential factor for the prototype’s performance. The motion transmission is divided into two main steps, each playing a specific role in the mechanism.
 
-### Gearbox (Step 1)
+### Gearbox 
 
 The first step involves a gearbox with a 2:1 gear ratio, providing speed amplification. This gearbox is specifically designed for our prototype, providing smooth and reliable operation while efficiently increasing output speed. Its compact design and gear ratio make it ideal for the limited scale and precision required by our system.
 
 **[Insert gearbox photo here]**
 
-### Worm Gear (Step 2)
+### Worm Gear 
 
 The second step uses a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump and significantly increasing the mechanical advantage. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
 
 **[Insert worm gear image here]**
+
 ---
 
 ## Lifting System
-The lifting system provides controlled vertical movement to raise or lower components as needed. It is engineered to offer stability and precision, utilizing robust actuators and supports to handle loads without compromising performance.  
-**STL file:** [lifting_system.stl](path/to/lifting_system.stl)
+
+The lifting system is responsible for managing the vertical movement of the mass with precision and stability. It consists of three main components:
+
+### Main Pulley (Spool)
+
+This is the central pulley around which the rope winds. Its radius directly affects the torque experienced in the system, playing a key role in the mechanical advantage and energy efficiency. During the project, we designed and tested three main versions of this pulley to optimize performance and durability.
+
+**STL files:**  
+- [Version 1 Pulley STL](path/to/pulley_version1.stl)  
+- [Version 2 Pulley STL](path/to/pulley_version2.stl)  
+- [Final Pulley Design STL](path/to/final_pulley_design.stl)  <!-- This is the design we currently use -->
+
+### Guiding Pulleys
+
+Two guiding pulleys are installed at the top of the tower. Their main function is to route the rope correctly, ensuring it remains aligned throughout the lifting and lowering operations.
+
+**STL file:**  
+- [Guiding Pulley STL](path/to/guiding_pulley.stl)
+
+### Mass Pulley
+
+Attached directly to the mass, this pulley serves multiple purposes: it protects the rope from excessive wear, improves the stability of the mass during motion, and doubles the torque applied when lifting. This crucial component helps regulate the discharge time, improving system reliability.
+
+**[Insert mass pulley image here]**
 
 ---
 

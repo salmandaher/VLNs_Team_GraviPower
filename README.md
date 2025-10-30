@@ -22,7 +22,7 @@ The pseudo-bump functions by converting the mechanical energy from vehicles pass
 
 ### Fixed Joint
 
-which contains two STL parts: the connecting plate between the fixed joint and the moving joint, and the bearing holder that houses the bearing linking to the Tetrix system.  
+Which contains two STL parts: the connecting plate between the fixed joint and the moving joint, and the bearing holder that houses the bearing linking to the Tetrix system.  
 **STL files:**  
 - [First Part (Fixed Joint) STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/first.stl)  
 - [Bearing Holder STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/stls/inner%20bearing%20to%20tetrix.stl)  
@@ -35,7 +35,7 @@ The moving joint is created between the plate with the fixed joint and another p
 
 ### The Base
 
-which holds the fixed and moving joints together, providing structural stability.  
+Which holds the fixed and moving joints together, providing structural stability.  
 **STL file:**  
 - [Base Station STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/station.stl)  
 
@@ -43,19 +43,19 @@ which holds the fixed and moving joints together, providing structural stability
 
 ## Motion Transmission and Torque Amplification (The Gearbox)
 
-This phase of the project is critical as it ensures efficient transfer and amplification of the torque necessary to lift the mass. The total torque amplification ratio achieved here is 20:1, an essential factor for the prototype’s performance. The motion transmission is divided into two main steps, each playing a specific role in the mechanism.
+This part of the project is critical as it ensures efficient transfer and amplification of the torque necessary to lift the mass. The total torque amplification ratio achieved here is 10:1, an essential factor for the prototype’s performance. The motion transmission is divided into two main steps, each playing a specific role in the mechanism.
 
 ### Gearbox 
 
-The first step involves a gearbox with a 2:1 gear ratio, providing speed amplification. This gearbox is specifically designed for our prototype, providing smooth and reliable operation while efficiently increasing output speed. Its compact design and gear ratio make it ideal for the limited scale and precision required by our system.
+The first stage involves a gearbox with a 4:1 gear speeding ratio, providing speed amplification (which is 1:4 torque ratio). This speed amplification factor is necessary to counter the huge torque amplifaction factor of the next stage, keeping the torque amplification high just enough to lift the mass with the weight of the passing car.
 
-**[Insert gearbox photo here]**
+[Gearbox image](path/to/gearbox) 
 
 ### Worm Gear 
 
-The second step uses a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump and significantly increasing the mechanical advantage. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
+The second stage is a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
 
-kkk
+[Worm gear image](path/to/wormgear)
 
 ---
 

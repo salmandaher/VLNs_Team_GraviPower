@@ -83,8 +83,7 @@ Two guiding pulleys are installed at the top of the tower. Their main function i
 
 Attached directly to the mass, this pulley serves multiple purposes: it protects the rope from excessive wear, improves the stability of the mass during motion, and doubles the torque applied when lifting. This crucial component helps regulate the discharge time, improving system reliability.
 
-**[Insert mass pulley image here]**
-
+![Motor Gearbox](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/bf33870ca1736469e62d55921a4af209934893d6/imgs/Motor%20gearbox%20(2).jpg)
 ---
 
 ## Connecting and Disconnecting Mechanism

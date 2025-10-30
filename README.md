@@ -68,16 +68,16 @@ The lifting system is responsible for managing the vertical movement of the mass
 This is the central pulley around which the rope winds. Its radius directly affects the torque experienced in the system, playing a key role in the mechanical advantage and energy efficiency. During the project, we designed and tested three main versions of this pulley to optimize performance and durability.
 
 **STL files:**  
-- [Version 1 Pulley STL](path/to/pulley_version1.stl)  
-- [Version 2 Pulley STL](path/to/pulley_version2.stl)  
-- [Final Pulley Design STL](path/to/final_pulley_design.stl)  <!-- This is the design we currently use -->
+- [Version 1 Pulley STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v1.0-01.stl)  
+- [Version 2 Pulley STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v1.0-03.stl)  
+- [Final Pulley Design STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v3.2.stl)  <!-- This is the design we currently use -->
 
 ### Guiding Pulleys
 
 Two guiding pulleys are installed at the top of the tower. Their main function is to route the rope correctly, ensuring it remains aligned throughout the lifting and lowering operations.
 
 **STL file:**  
-- [Guiding Pulley STL](path/to/guiding_pulley.stl)
+- [Guiding Pulley STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/direction_pulley.stl)
 
 ### Mass Pulley
 
@@ -88,8 +88,28 @@ Attached directly to the mass, this pulley serves multiple purposes: it protects
 ---
 
 ## Connecting and Disconnecting Mechanism
-This mechanism allows for the seamless connection and disconnection of various subsystems. It is designed for reliability and ease of use, enabling quick assembly or disassembly without tools. This feature aids in maintenance and modular upgrades.  
-**STL file:** [connecting_disconnecting_mechanism.stl](path/to/connecting_disconnecting_mechanism.stl)
+
+In our project, it is essential to disconnect the main pulley from the gearbox and connect it to the energy generation system, and the opposite, which consists of the motor and its dedicated gearbox. This requirement led to the development of a specialized connecting and disconnecting mechanism.
+
+The core component consists of 3D-printed PLA parts that resemble circular saw-tooth gears designed to transfer energy unidirectionally. When the main pulley is shifted towards the gearbox side, two opposing saw-tooth parts engage, allowing the gearbox to drive the pulley. Conversely, when the pulley is pushed in the opposite direction, the saw-tooth parts disengage on the gearbox side and engage on the motor side gearbox, thus transferring motion accordingly.
+
+To facilitate the movement between these two positions, we utilize an HTS-35H Servo motor with a torque capacity of 35 KG·cm. This servo motor is connected to a rack and pinion mechanism that converts the servo’s rotational input into linear motion, enabling precise and reliable movement of the connecting and disconnecting assembly. The servo is controlled by an ESP32 core board alongside a multifunctional extension board for efficient operation.
+
+### Saw-Tooth Gears
+
+These saw-tooth gears are the key elements that allow unidirectional energy transmission during connection and disconnection. The design includes two complementary halves to ensure smooth engagement and disengagement.
+
+**STL files:**  
+- [Saw-Tooth Gear Half 1 STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Coupler%20V2.0-2.stl)  
+- [Saw-Tooth Gear Half 2 STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Coupler%20V2.0.stl)
+
+### Rack and Pinion Mechanism
+
+The rack and pinion mechanism translates the servo motor’s rotational motion into linear displacement. The pinion, rotated by the servo, engages with the rack teeth to produce controlled linear movement. This mechanism enables the precise shifting required to connect or disconnect the main pulley from either gearbox side.
+
+**STL files:**  
+- [Rack STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/39300B_TXM-Linear%20Slide%20Rail.stl)  
+- [Pinion STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/39300A_TXM-Linear%20Slide%20Gear.stl)
 
 ---
 

@@ -55,13 +55,13 @@ This part of the project is critical as it ensures efficient transfer and amplif
 
 The first stage involves a gearbox with a 4:1 gear speed ratio, providing speed amplification (which is 1:4 torque ratio). This speed amplification factor is necessary to counter the huge torque amplification factor of the next stage, keeping the torque amplification high just enough to lift the mass with the weight of the passing car.
 
-![Gearbox image](path/to/gearbox) 
+![Gearbox image](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/project%20images/Gearbox.jpg) 
 
 ### Worm Gear 
 
 The second stage is a worm gear, which serves two main purposes. First, it amplifies torque with a 40:1 ratio, making it easier for the car to press the bump. Second, the worm gear acts as a self-locking mechanism, preventing the mass from falling while being lifted. This is because the worm gear cannot be driven backward by the gear connected to it; it only transmits motion forward, thus securing the mass position reliably.
 
-![Worm gear image](path/to/wormgear)
+![Worm gear image](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/project%20images/Worm%20Gear.jpg)
 
 ---
 
@@ -89,7 +89,7 @@ Two guiding pulleys are installed at the top of the tower. Their main function i
 
 Attached directly to the mass, this pulley serves multiple purposes: it protects the rope from excessive wear, improves the stability of the mass during motion, and doubles the torque applied when lifting. This crucial component helps regulate the discharge time, improving system reliability.
 
-![Mass pulley image](path/to/masspulley)
+![Mass pulley image](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/project%20images/Mass%20Pulley.jpg)
 
 ---
 

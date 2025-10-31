@@ -43,7 +43,7 @@ This holds the fixed and moving joints together, providing structural stability.
 
 The bump moves when the free end is depressed by a passing vehicle, rotating around the fixed joint. After the vehicle passes, the return spring restores the bump to its original raised position, completing the motion cycle.
 
-![Bump Movement](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/Bump%20Motion.mp4)
+![Bump Movement](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/Bump%20Motion%20Gif.gif)
 
 ---
 

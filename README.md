@@ -18,26 +18,32 @@ This section provides an overview of the key mechanical components used in our p
 
 ## Pseudo-Bump Mechanism Overview
 
-The pseudo-bump functions by converting the mechanical energy from vehicles passing over it into usable energy for the system. It includes several key components that work in harmony to achieve this. The fixed joint acts as the pivot point for the bump's rotation when a vehicle passes over it. Inside this joint is an anti-reverse bearing (Rollman bearing) that prevents backward motion when the bump resets. Once a vehicle passes, a return spring compresses under pressure and then pushes the bump back to its starting position when the vehicle leaves. The moving joint allows the bump to flatten as vehicles pass, transferring the force efficiently through the rotaion of the fixed joint and maintaining system reliability.
+The pseudo-bump functions by converting the mechanical energy from vehicles passing over it into usable energy for the system. It includes several key components that work in harmony to achieve this. The fixed joint acts as the pivot point for the bump's rotation when a vehicle passes over it. Inside this joint is an anti-reverse bearing (Rollman bearing) that prevents backward motion when the bump resets. Once a car passes, a return spring compresses under pressure and then pushes the bump back to its starting position when the vehicle leaves. The moving joint allows the bump to flatten as vehicles pass, transferring the force efficiently through the rotation of the fixed joint and maintaining system reliability.
 
 ### Fixed Joint
 
-Which contains two STL parts: the connecting plate between the fixed joint and the moving joint, and the bearing holder that houses the bearing linking to the Tetrix system.  
+This contains two STL parts: the connecting plate, which connects the fixed joint to the moving joint, and the bearing holder that houses the bearing linked to the Tetrix system.  
 **STL files:**  
 - [First Part (Fixed Joint) STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/first.stl)  
 - [Bearing Holder STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/stls/inner%20bearing%20to%20tetrix.stl)  
 
 ### Moving Joint
 
-The moving joint is created between the plate with the fixed joint and another plate with a free end, the part pressed directly by vehicles.  
+The moving joint is created between the plate with the fixed joint and another plate with a free end, which part pressed directly by vehicles.  
 **STL file:**  
 - [Moving Joint Linkage STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/second.stl)  
 
 ### The Base
 
-Which holds the fixed and moving joints together, providing structural stability.  
+This holds the fixed and moving joints together, providing structural stability.  
 **STL file:**  
 - [Base Station STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/d1e83de02112018f51a4b01dffcafd82a4864781/3d%20designs/Bump/station.stl)  
+
+### Bump Motion Description
+
+The bump moves when the free end is depressed by a passing vehicle, rotating around the fixed joint. After the vehicle passes, the return spring restores the bump to its original raised position, completing the motion cycle.
+
+![Bump Movement GIF](path/to/bump_motion.gif)
 
 ---
 
@@ -47,7 +53,7 @@ This part of the project is critical as it ensures efficient transfer and amplif
 
 ### Gearbox 
 
-The first stage involves a gearbox with a 4:1 gear speeding ratio, providing speed amplification (which is 1:4 torque ratio). This speed amplification factor is necessary to counter the huge torque amplifaction factor of the next stage, keeping the torque amplification high just enough to lift the mass with the weight of the passing car.
+The first stage involves a gearbox with a 4:1 gear speed ratio, providing speed amplification (which is 1:4 torque ratio). This speed amplification factor is necessary to counter the huge torque amplification factor of the next stage, keeping the torque amplification high just enough to lift the mass with the weight of the passing car.
 
 ![Gearbox image](path/to/gearbox) 
 
@@ -65,12 +71,12 @@ The lifting system is responsible for managing the vertical movement of the mass
 
 ### Main Pulley (Spool)
 
-This is the central pulley which the rope winds around. Its radius directly affects the torque experienced in the system, playing a key role in the mechanical advantage and energy efficiency. During the project, we designed and tested three main versions of this pulley to optimize performance and durability.
+This is the central pulley around which the rope winds. Its radius directly affects the torque experienced in the system, playing a key role in the mechanical advantage and energy efficiency. During the project, we designed and tested three main versions of this pulley to optimize performance and durability.
 
 **STL files:**  
 - [Version 1 Pulley STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v1.0-01.stl)  
 - [Version 2 Pulley STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v1.0-03.stl)  
-- [Final Pulley Design STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v3.2.stl)  <!-- This is the design we currently use -->
+- [Final Pulley Design STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Pulley%20v3.2.stl) 
 
 ### Guiding Pulleys
 

@@ -15,7 +15,7 @@ You can also download and review the detailed project report we submitted:
 
 Welcome to our project repository. We are the VLNs team, passionate about robotics and innovation.
 
-![Team Photo](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/team%20final%20copy.jpg)
+![Team Photo](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/VLNs%20Team%20Photo.jpg)
 
 Here is our coach, who has been a great mentor and guide throughout our journey:
 

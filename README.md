@@ -53,7 +53,7 @@ This part of the project is critical as it ensures efficient transfer and amplif
 
 ### Gearbox 
 
-The first stage involves a gearbox with a 4:1 gear speed ratio, providing speed amplification (which is 1:4 torque ratio). This speed amplification factor is necessary to counter the huge torque amplification factor of the next stage, keeping the torque amplification high just enough to lift the mass with the weight of the passing car.
+The first stage involves a gearbox with a 4:1 gear speed ratio, providing speed amplification (which is a 1:4 torque ratio). This speed amplification factor is necessary to counter the huge torque amplification factor of the next stage, keeping the torque amplification high just enough to lift the mass with the weight of the passing car.
 
 ![Gearbox image](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/project%20images/Gearbox.jpg) 
 
@@ -95,11 +95,11 @@ Attached directly to the mass, this pulley serves multiple purposes: it protects
 
 ## Connecting and Disconnecting Mechanism
 
-to switch to the discharging mode, the main pulley should be disconnected from the gearbox and connected to the energy generation system, which consists of the motor and its dedicated gearbox. This requirement led to the development of a specialized connecting and disconnecting mechanism.
+To switch to the discharging mode, the main pulley should be disconnected from the gearbox and connected to the energy generation system, which consists of the motor and its dedicated gearbox. This requirement led to the development of a specialized mechanism for connecting and disconnecting.
 
 The core component consists of 3D-printed PLA parts that resemble circular saw-tooth gears designed to transfer energy unidirectionally. When the main pulley is shifted towards the gearbox side, two opposing saw-tooth parts engage, allowing the gearbox to drive the pulley. Conversely, when the pulley is pushed in the opposite direction, the saw-tooth parts disengage on the gearbox side and engage on the motor side gearbox, thus transferring motion to the motor side.
 
-To facilitate the movement between these two positions, we utilize an HTS-35H Servo motor with a torque capacity of 35 KG·cm. This servo motor is connected to a rack and pinion mechanism that converts the servo’s rotational motion into linear motion, enabling precise and reliable movement of the connecting and disconnecting assembly. The servo is controlled by an ESP32 core board alongside a multifunctional extension board for efficient operation.
+To facilitate movement between these two positions, we utilize an HTS-35H Servo motor with a torque capacity of 35 kg ·cm. This servo motor is connected to a rack and pinion mechanism that converts the servo’s rotational motion into linear motion, enabling precise and reliable movement of the connecting and disconnecting assembly. The servo is controlled by an ESP32 core board alongside a multifunctional extension board for efficient operation.
 
 ### Saw-Tooth Gears
 
@@ -109,6 +109,11 @@ These saw-tooth gears are the key elements that allow unidirectional energy tran
 - [Saw-Tooth Gear Half 1 STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Coupler%20V2.0-2.stl)  
 - [Saw-Tooth Gear Half 2 STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/Coupler%20V2.0.stl)
 
+Here is a simulation demonstrating the engagement and disengagement process of the saw tooth gear:
+![Tooth Gear Motion](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/C%26D%20Motion%20Gif.gif)
+
+
+
 ### Rack and Pinion Mechanism
 
 The rack and pinion mechanism translates the servo motor’s rotational motion into linear displacement. The pinion, rotated by the servo, engages with the rack teeth to produce controlled linear movement. This mechanism enables the precise shifting required to connect or disconnect the main pulley from either gearbox side.
@@ -117,10 +122,13 @@ The rack and pinion mechanism translates the servo motor’s rotational motion i
 - [Rack STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/39300B_TXM-Linear%20Slide%20Rail.stl)  
 - [Pinion STL](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/a61094ec972bfa96dd2c8d812677eebc3b2d72a3/3d%20designs/stls/39300A_TXM-Linear%20Slide%20Gear.stl)
 
+Below is a simulation illustrating the full operation of the connecting and disconnecting mechanism:
+![C&D Full Mechanism Motion](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/C%26D%20Motion%20(Full%20Mechanism)%20GIF.gif)
+
 ---
 
 ## Motor Gearbox
-The motor gearbox is set to adjust the motor output speed and torque to a desired level. It applies a 1.5 speed amplification factor, combined with th3 2:1 speed amplification applied by the mass pulley system, the total becomes a 3:1 speed amplification factor rotating the motor from the mass' fall to produce higher voltage values.  
+The motor gearbox is set to adjust the motor output speed and torque to a desired level. It applies a 1.5 speed amplification factor, combined with the 2:1 speed amplification applied by the mass pulley system, the total becomes a 3:1 speed amplification factor, rotating the motor from the mass's fall to produce higher voltage values.  
 
 ![Motor Gearbox](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/bf33870ca1736469e62d55921a4af209934893d6/imgs/Motor%20gearbox%20(2).jpg)
 

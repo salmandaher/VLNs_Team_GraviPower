@@ -7,7 +7,7 @@ Below is the high-quality version of the video we submitted to the WRO competiti
 [WRO Competition Video](https://youtu.be/KDbOAnvwZOE)
 
 You can also download and review the detailed project report we submitted:  
-**[Project Report (WRO Submission)](YOUR_REPORT_LINK_HERE)**
+**[Project Report (WRO Submission)](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/bfb26dfb872fea5c6c9b23eaee99e1bb86ba5fde/final%20report%20-%20VLNs.pdf)**
 
 ---
 

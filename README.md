@@ -19,7 +19,14 @@ Welcome to our project repository. We are the VLNs team, passionate about roboti
 
 Here is our coach, who has been a great mentor and guide throughout our journey:
 
-![Coach Photo](path/to/coach_photo.jpg)
+![Coach Photo](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/Coach%20Photo.png)
+
+---
+
+# Full Project Photo
+
+![Full Project Photo](https://github.com/salmandaher/VLNs_Team_GraviPower/blob/main/imgs/Full%20Project.png)
+
 
 ---
 
